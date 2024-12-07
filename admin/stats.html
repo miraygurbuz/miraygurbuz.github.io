@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin Yönetim Paneli - İstatistikler</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/css/admin.css" rel="stylesheet">
+    <link href="/css/stats.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="admin.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>e-Eğitim <b>| Yönetim</b></h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="admin.html" class="nav-item nav-link">Dashboard</a>
+                <a href="add-announcements.html" class="nav-item nav-link">Duyurular</a>
+                <a href="add-course.html" class="nav-item nav-link">Eğitimler</a>
+                <a href="tickets.html" class="nav-item nav-link">Öneri & Şikayet Formları</a>
+                <a href="stats.html" class="nav-item nav-link active">İstatistikler</a>
+            </div>
+            <a href="/index.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Kullanıcı Paneli<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Dashboard Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">İstatistikler</h6>
+                <h1 class="mb-5">Sayılarla e-Eğitim</h1>
+            </div>
+            <div class="row g-5">               
+                <div class="col-lg-3 col-sm-6">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <div class="icon">
+                                <i class="fas fa-chart-bar"></i>
+                              </div>
+                            <h5 class="mb-3">Toplam Katılımcı Sayısı</h5>
+                            <p>Sistemde kayıtlı toplam 10.000 katılımcı bulunuyor.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <div class="icon">
+                                <i class="fas fa-chart-area"></i>
+                              </div>
+                            <h5 class="mb-3">Aktif Eğitim Sayısı</h5>
+                            <p>Sistemde toplamda 120 eğitim şu anda erişime açık durumda.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <div class="icon">
+                                <i class="fas fa-chart-bar"></i>
+                              </div>
+                              <h5 class="mb-3">Başarı Oranı</h5>
+                              <p>Kullanıcıların eğitim final testini geçme oranı şu anda %85.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <div class="icon">
+                                <i class="fas fa-chart-line"></i>
+                              </div>
+                            <h5 class="mb-3">En Popüler Eğitim</h5>
+                            <p>En çok tercih edilen eğitim "Full-Stack Geliştirme Paketi".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="accordion-container">
+            <div class="accordion">
+                <button class="accordion-button">Güncel Verileri Görüntüle</button>
+                <div class="accordion-content">
+                    <canvas id="statisticsChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="accordion-container">
+            <div class="accordion">
+                <button class="accordion-button">Aylara Göre Aktif Eğitim Katılımcı Sayılarını Görüntüle</button>
+                <div class="accordion-content">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="accordion-container">
+            <div class="accordion">
+                <button class="accordion-button">Eğitim Türleri Dağılımını Göster / Gizle</button>
+                <div class="accordion-content">
+                    <canvas id="educationTypeChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>   
+    
+    <!-- Dashboard End -->
+
+
+     <!-- Footer Start -->
+     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Hızlı Bağlantılar</h4>
+                    <a class="btn btn-link" href="/about.html">Hakkımızda</a>
+                    <a class="btn btn-link" href="/announcements.html">Duyurular</a>
+                    <a class="btn btn-link" href="/mission.html">Vizyon Misyon</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">İletişim</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Kabaoğlu, 41001 İzmit/Kocaeli</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>(0262) 303 18 04</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>kurumsaliletisim@kocaeli.edu.tr</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Galeri</h4>
+                    <div class="row g-2 pt-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="/img/course-1.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="/img/course-2.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="/img/course-3.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="/img/course-2.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="/img/course-3.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="/img/course-1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Bülten</h4>
+                    <p>e-Eğitim'den düzenli güncel bilgiler almak için hemen abone olun!</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="E-mail adresiniz">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Kayıt Ol</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">e-Eğitim</a>, Tüm hakları saklıdır.
+
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed by <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                            <a href="/index.html">Ana Sayfa</a>
+                            <a href="/announcements.html">Duyurular</a>
+                            <a href="/about.html">Hakkımızda</a>
+                            <a href="/mission.html">Vizyon Misyon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/stats.js"></script>
+    <script>
+        var ctx = document.getElementById('statisticsChart').getContext('2d');
+        var statisticsChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Üye Sayısı', 'Eğitmen Sayısı', 'Eğitim Sayısı'],
+                datasets: [{
+                    label: 'Aktif  Kullanıcı ve Eğitmenler ile Yayında Olan Eğitim Sayısı',
+                    data: [300, 90, 110],
+                    backgroundColor: ['#F0FBFC', '#06BBCC', '#2196F3'],
+                    borderColor: ['#c8e8e2', '#06BBCC', '#06BBCC'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 18
+                            }
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        bodyFont: {
+                            size: 14
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 16
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                size: 16
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        var ctx2 = document.getElementById('lineChart').getContext('2d');
+        var lineChart = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran'],
+                datasets: [{
+                    label: 'Aylık Katılımcı Sayısı',
+                    data: [150, 200, 300, 250, 400, 350],
+                    borderColor: '#06BBCC',
+                    backgroundColor: 'rgba(6, 187, 204, 0.2)',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#2196F3',
+                    pointBorderColor: '#fff',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 18
+                            }
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        bodyFont: {
+                            size: 14
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 16
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                size: 16
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        var ctx3 = document.getElementById('educationTypeChart').getContext('2d');
+        var educationTypeChart = new Chart(ctx3, {
+            type: 'pie',
+            data: {
+            labels: ['Yazılım Geliştirme', 'Veri Bilimi', 'Dijital Pazarlama', 'Yapay Zeka'],
+            datasets: [{
+                data: [40, 25, 20, 15],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 18
+                        }
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    bodyFont: {
+                        size: 14
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+
+</html>
+

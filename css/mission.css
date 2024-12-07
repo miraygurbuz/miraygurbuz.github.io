@@ -1,0 +1,13 @@
+.vision-mission-section {
+    padding: 40px 20px;
+}
+
+.vision-mission-section .vision-box,
+.vision-mission-section .mission-box {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}

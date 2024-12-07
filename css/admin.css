@@ -1,0 +1,182 @@
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    flex: 1;
+}
+.cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.card {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.recent-activity ul {
+    list-style: none;
+}
+
+.recent-activity li {
+    background-color: #ecf0f1;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.recent-activity li:hover {
+    background-color: #bdc3c7;
+}
+
+.announcement-form {
+    background-color: #ecf0f1;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.announcement-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.announcement-form label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.announcement-form input, .announcement-form textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.announcement-form input[type="file"] {
+    padding: 5px;
+}
+
+.announcement-list{
+    border-radius: 8px;
+}
+
+.announcement-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.announcement-list th, .announcement-list td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.announcement-list th {
+    color: white;
+}
+
+.announcement-list td {
+    background-color: #ecf0f1;
+}
+
+.announcement-list a {
+    text-decoration: none;
+    color: #3498db;
+    margin-right: 10px;
+}
+
+.announcement-list a:hover {
+    color: #2980b9;
+}
+
+.delete {
+    color: #e74c3c !important;
+}
+
+.delete:hover {
+    color: #c0392b !important;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    padding: 8px 16px;
+    margin: 0 5px;
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #2980b9;
+}
+
+.pagination .prev, .pagination .next {
+    font-weight: bold;
+}
+
+.pagination .page {
+    cursor: pointer;
+}
+
+.pagination .page:hover {
+    background-color: #2980b9;
+}
+
+.hashtag-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.hashtag-list .hashtag {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+#video-sections {
+    margin-top: 10px;
+}
+
+.video-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.video-section input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
