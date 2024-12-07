@@ -323,6 +323,7 @@
             .then(function(response) {
             document.getElementById("loading").style.display = 'none';
             document.getElementById("success").style.display = 'block';
+            document.getElementById("contact-form").reset();
             }, function(error) {
             document.getElementById("loading").style.display = 'none';
             document.getElementById("error").style.display = 'block';
